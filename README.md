@@ -1,0 +1,2 @@
+# LiveKraken
+Live streaming platform
