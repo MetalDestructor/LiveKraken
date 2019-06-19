@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Live Streaming</title>
+    <link href="https://unpkg.com/video.js@6.7.1/dist/video-js.css" rel="stylesheet">
+    <script src="https://unpkg.com/video.js@6.7.1/dist/video.js"></script>
+    <script src="https://unpkg.com/@videojs/http-streaming@0.9.0/dist/videojs-http-streaming.js"></script>
+</head>
+
+<body>
+    <video id="player" class="video-js vjs-default-skin" height="360" width="640" controls preload="none">
+        <source src="http://localhost:8080/hls/test.m3u8" type="application/x-mpegURL" />
+    </video>
+    <script>
+        var player = videojs('#player');
+    </script>
+</body>
+
+</html>
