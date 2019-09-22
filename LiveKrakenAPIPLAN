@@ -1,0 +1,29 @@
+API Functionallity
+
+Authentication Controller:
+-Login
+-Register
+
+User Controller:
+-Get Followers(UserId)
+-Get Views(UserId)
+-Get Following(UserId)
+
+Stream Controller:
+-Get Stream URL(UserId) !only accessable for the authorized user!
+-Get Stream(UserId)
+
+Stream and User Controller will probably be one
+
+Chat Controller:
+-Get ChatRoom(UserId)
+
+VOD Controller:
+-Get VOD(id)
+-Get VODs(UserId)
+
+Games Controller: ?
+-Get all games
+-Get live channels(gameId)
+
+
