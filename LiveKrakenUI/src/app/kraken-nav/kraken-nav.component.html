@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <span routerLink="/">LiveKraken</span>
+    <button mat-button [routerLink]="['/browse']">
+        <mat-icon>library_books</mat-icon> &nbsp; Browse
+    </button>
+    <span style="flex: 1 1 auto"></span>
+    <ng-template [ngIf]="authService.isAuthenticated()">
+        <button mat-button color="accent">
+            <mat-icon>account_box</mat-icon> &nbsp; Hello, {{getUsername()}}
+        </button>
+
+        <button mat-button (click)="authService.logout()">
+            <mat-icon>exit_to_app</mat-icon> &nbsp; Logout
+        </button>
+    </ng-template>
+    <ng-template [ngIf]="!authService.isAuthenticated()">
+        <button mat-button (click)="openLoginDialog()">
+            <mat-icon>perm_identity</mat-icon> &nbsp; Login
+        </button>
+        <button mat-button (click)="openRegisterDialog()">
+            <mat-icon>call_made</mat-icon> &nbsp; Register
+        </button>
+    </ng-template>
+</mat-toolbar>
