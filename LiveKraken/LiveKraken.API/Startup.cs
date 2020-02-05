@@ -1,4 +1,7 @@
-﻿using LiveKraken.Data;
+﻿using LiveKraken.API.Extensions;
+using LiveKraken.Data;
+using LiveKraken.Services;
+using LiveKraken.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +25,7 @@ namespace LiveKraken.API
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("KrakenDB")));
+            services.AddServices(this.Configuration);
             services.AddControllers();
         }
 
@@ -37,7 +41,15 @@ namespace LiveKraken.API
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseCors(options =>
+            {
+                options.WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .AllowAnyMethod();
+            });
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

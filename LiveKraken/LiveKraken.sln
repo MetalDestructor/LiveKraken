@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveKraken.Models", "LiveKraken.Models\LiveKraken.Models.csproj", "{EFEE933E-443D-4FDD-9FB2-5E3F690848E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveKraken.API", "LiveKraken.API\LiveKraken.API.csproj", "{B351F09A-EE5F-4A39-99A5-1750DF65D729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveKraken.API", "LiveKraken.API\LiveKraken.API.csproj", "{B351F09A-EE5F-4A39-99A5-1750DF65D729}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveKraken.Data", "LiveKraken.Data\LiveKraken.Data.csproj", "{2B6C4088-D717-4A0A-976A-266C982324FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveKraken.Data", "LiveKraken.Data\LiveKraken.Data.csproj", "{2B6C4088-D717-4A0A-976A-266C982324FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveKraken.Services", "LikeKraken.Services\LiveKraken.Services.csproj", "{6E2562B1-116E-4753-BC50-5F254D9FAAFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveKraken.DataServices", "LiveKraken.DataServices\LiveKraken.DataServices.csproj", "{33FB7371-1E68-40A2-9C0D-CFCA3FBF2E30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{2B6C4088-D717-4A0A-976A-266C982324FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B6C4088-D717-4A0A-976A-266C982324FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B6C4088-D717-4A0A-976A-266C982324FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E2562B1-116E-4753-BC50-5F254D9FAAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E2562B1-116E-4753-BC50-5F254D9FAAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E2562B1-116E-4753-BC50-5F254D9FAAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E2562B1-116E-4753-BC50-5F254D9FAAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33FB7371-1E68-40A2-9C0D-CFCA3FBF2E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33FB7371-1E68-40A2-9C0D-CFCA3FBF2E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33FB7371-1E68-40A2-9C0D-CFCA3FBF2E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33FB7371-1E68-40A2-9C0D-CFCA3FBF2E30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

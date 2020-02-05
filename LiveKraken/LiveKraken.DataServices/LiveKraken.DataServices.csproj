@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LikeKraken.Services\LiveKraken.Services.csproj" />
+    <ProjectReference Include="..\LiveKraken.Data\LiveKraken.Data.csproj" />
+    <ProjectReference Include="..\LiveKraken.Models\LiveKraken.Models.csproj" />
+  </ItemGroup>
+
+</Project>

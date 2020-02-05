@@ -26,8 +26,13 @@ namespace LiveKraken.Models
         public List<string> Followers { get; set; }
 
         public List<string> Following { get; set; }
+        public string Avatar { get; set; }
 
         public Guid RoleId { get; set; }
         public Role Role { get; set; }
+
+        public Guid StreamId { get; set; }
+        public Stream Stream { get; set; }
+
     }
 }

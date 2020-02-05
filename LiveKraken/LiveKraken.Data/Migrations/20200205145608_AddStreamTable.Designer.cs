@@ -4,14 +4,16 @@ using LiveKraken.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LiveKraken.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200205145608_AddStreamTable")]
+    partial class AddStreamTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,15 +42,6 @@ namespace LiveKraken.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Games");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("8e99bcbb-84e1-4957-98cf-eb5c3a186296"),
-                            Description = "",
-                            Image = "https://pbs.twimg.com/profile_images/1049746840/blank_400x400.jpg",
-                            Title = ""
-                        });
                 });
 
             modelBuilder.Entity("LiveKraken.Models.Role", b =>
@@ -68,7 +61,7 @@ namespace LiveKraken.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d5fe4106-e7c1-493c-8118-02298e96e2a8"),
+                            Id = new Guid("010f4d5d-721e-429e-9ca9-324fb9b466f2"),
                             RoleName = "user"
                         });
                 });
@@ -101,7 +94,7 @@ namespace LiveKraken.Data.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Streams");
+                    b.ToTable("Stream");
                 });
 
             modelBuilder.Entity("LiveKraken.Models.User", b =>

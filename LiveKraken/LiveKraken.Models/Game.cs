@@ -15,5 +15,8 @@ namespace LiveKraken.Models
 
         [Required]
         public string Description { get; set; }
+
+        [Required]
+        public string Image { get; set; }
     }
 }
