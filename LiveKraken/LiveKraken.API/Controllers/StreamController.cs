@@ -47,6 +47,21 @@ namespace LiveKraken.API.Controllers
 
         }
 
+        [HttpGet("stream/{username}")]
+        public IActionResult GetStream(string username)
+        {
+            try
+            {
+                var streamDto = this.streamService.GetStream(username);
+                return Ok(streamDto);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(500, "Server Error on getting online streams.");
+            }
+
+        }
+
         [HttpPut("status")]
         public IActionResult ChangeStatus([FromBody]StatusDto stream)
         {

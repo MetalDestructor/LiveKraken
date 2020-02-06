@@ -9,6 +9,7 @@ namespace LiveKraken.DataServices.Interfaces
     {
         IEnumerable<StreamDto> GetStreams();
         IEnumerable<StreamDto> GetOnlineStreams();
+        StreamDto GetStream(string username);
         void ChangeStatus(Guid streamId);
     }
 }

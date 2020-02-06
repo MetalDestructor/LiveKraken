@@ -29,6 +29,12 @@ namespace LiveKraken.DataServices
             return onlineStreams;
         }
 
+        public StreamDto GetStream(string username)
+        {
+            var stream = this.dbContext.Streams.Include(x => x.User).Include(x => x.Game).FirstOrDefault(x => x.User.Username == username);
+            return new StreamDto(stream);
+        }
+
         public void ChangeStatus(Guid streamId)
         {
             this.dbContext.Streams.FirstOrDefault(s => s.StreamId == streamId).IsOnline = !this.dbContext.Streams.FirstOrDefault(s => s.StreamId == streamId).IsOnline;
