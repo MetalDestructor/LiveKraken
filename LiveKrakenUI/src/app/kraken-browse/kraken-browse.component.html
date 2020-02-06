@@ -1,13 +1,8 @@
 <mat-grid-list cols="4" rowHeight="375">
-    <mat-grid-tile *ngFor="let stream of streams" [routerLink]="['/', stream.username]">
+    <mat-grid-tile *ngFor="let stream of streams" [routerLink]="['/stream', stream.username]">
         <mat-card class="stream-card">
             <mat-card-title-group>
                 <mat-card-title>asd{{stream.title}}</mat-card-title>
-                <!-- <mat-card-subtitle *ngFor="let author of book.authors">
-                    <div>
-                        <span>{{author.name}}</span>
-                    </div>
-                </mat-card-subtitle> -->
                 <mat-card-subtitle>maiko{{stream.game}}</mat-card-subtitle>
                 <img mat-card-lg-image src={{stream.image}}>
             </mat-card-title-group>
