@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace LiveKraken.Models.DTO
 {
@@ -12,8 +13,8 @@ namespace LiveKraken.Models.DTO
             this.Username = u.Username;
             this.Email = u.Email;
 
-            this.Followers = u.Followers;
-            this.Following = u.Following;
+            this.Followers = u.Followers.Select(x => x.Follower.Username);
+            this.Following = u.Following.Select(x => x.User.Username);
             this.Avatar = u.Avatar;
             this.Role = u.Role?.RoleName;
         }

@@ -60,6 +60,7 @@ namespace LiveKraken.DataServices
             var stream = new Stream()
             {
                 StreamId = Guid.NewGuid(),
+                StreamKey = Guid.NewGuid()
             };
 
             var user = new User()

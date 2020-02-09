@@ -23,9 +23,9 @@ namespace LiveKraken.Models
         [Required]
         public byte[] PasswordSalt { get; set; }
 
-        public List<string> Followers { get; set; }
+        public ICollection<UserToUser> Followers { get; set; } = new List<UserToUser>();
 
-        public List<string> Following { get; set; }
+        public ICollection<UserToUser> Following { get; set; } = new List<UserToUser>();
         public string Avatar { get; set; }
 
         public Guid RoleId { get; set; }
