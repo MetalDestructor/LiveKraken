@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LikeKraken.Services\LiveKraken.Services.csproj" />
     <ProjectReference Include="..\LiveKraken.Data\LiveKraken.Data.csproj" />
     <ProjectReference Include="..\LiveKraken.Models\LiveKraken.Models.csproj" />

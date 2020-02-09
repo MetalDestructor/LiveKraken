@@ -6,6 +6,8 @@ using LiveKraken.Models.DTO;
 using System;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace LiveKraken.DataServices
 {
@@ -19,15 +21,15 @@ namespace LiveKraken.DataServices
             this.dbContext = dbContext ?? throw new ArgumentNullException("dbContext");
             this.authUtils = authUtils ?? throw new ArgumentNullException("authUtils");
         }
-        public UserDto Authenticate(LoginDto loginData)
+        public async Task<UserDto> Authenticate(LoginDto loginData)
         {
             if (loginData == null)
                 return null;
 
-            var user = dbContext.Users
+            var user = await dbContext.Users
                 .Where(x => x.Username == loginData.Username)
-                .SingleOrDefault();
-            user.Role = dbContext.Roles.FirstOrDefault(x => x.Id.Equals(user.RoleId));
+                .SingleOrDefaultAsync();
+            user.Role = await dbContext.Roles.SingleOrDefaultAsync(x => x.Id.Equals(user.RoleId));
 
             // check if email exists
             if (user == null)
@@ -41,7 +43,7 @@ namespace LiveKraken.DataServices
             return new UserDto(user);
         }
 
-        public UserDto Create(RegisterDto registerData)
+        public async Task<UserDto> CreateAsync(RegisterDto registerData)
         {
             if (registerData == null)
                 throw new ArgumentNullException("Password is required");
@@ -73,21 +75,21 @@ namespace LiveKraken.DataServices
 
             this.dbContext.Streams.Add(stream);
             this.dbContext.Users.Add(user);
-            this.dbContext.SaveChanges();
+            await this.dbContext.SaveChangesAsync();
 
             return new UserDto(user);
         }
 
-        public UserDto GetUser(Guid userId)
+        public async Task<UserDto> GetUser(Guid userId)
         {
-            var user = this.dbContext.Users.Find(userId);
+            var user = await this.dbContext.Users.FindAsync(userId);
             var userDto = new UserDto(user);
             return userDto;
         }
 
-        public UserDto GetUser(string username)
+        public async Task<UserDto> GetUser(string username)
         {
-            var user = this.dbContext.Users.First(u => u.Username == username);
+            var user = await this.dbContext.Users.SingleOrDefaultAsync(u => u.Username == username);
             var userDto = new UserDto(user);
             return userDto;
         }

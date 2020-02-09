@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LiveKraken.DataServices.Interfaces
 {
     public interface IStreamService
     {
-        IEnumerable<StreamDto> GetStreams();
-        IEnumerable<StreamDto> GetOnlineStreams();
-        StreamDto GetStream(string username);
-        void ChangeStatus(Guid streamId);
+        Task<IEnumerable<StreamDto>> GetStreams();
+        Task<IEnumerable<StreamDto>> GetOnlineStreams();
+        Task<StreamDto> GetStream(string username);
+        Task ChangeStatus(Guid streamId);
     }
 }

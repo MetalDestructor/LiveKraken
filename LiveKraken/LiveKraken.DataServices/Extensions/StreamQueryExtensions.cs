@@ -1,5 +1,9 @@
-﻿using System;
+﻿using LiveKraken.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LiveKraken.DataServices.Extensions
@@ -11,11 +15,11 @@ namespace LiveKraken.DataServices.Extensions
 
             if (user)
             {
-                query.Include(x => x.User);
+                query = query.Include(x => x.User);
             }
             if (game)
             {
-                query.Include(x => x.Game);
+                query = query.Include(x => x.Game);
             }
             return query;
         }

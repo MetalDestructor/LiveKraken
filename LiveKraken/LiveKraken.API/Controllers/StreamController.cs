@@ -18,11 +18,11 @@ namespace LiveKraken.API.Controllers
         }
 
         [HttpGet("browse")]
-        public IActionResult GetStreams()
+        public async Task<IActionResult> GetStreams()
         {
             try
             {
-                var streamsDto = this.streamService.GetStreams();
+                var streamsDto = await this.streamService.GetStreams();
                 return Ok(streamsDto);
             }
             catch (Exception)
@@ -33,11 +33,11 @@ namespace LiveKraken.API.Controllers
         }
 
         [HttpGet("browse/online")]
-        public IActionResult GetOnlineStreams()
+        public async Task<IActionResult> GetOnlineStreams()
         {
             try
             {
-                var streamsDto = this.streamService.GetOnlineStreams();
+                var streamsDto = await this.streamService.GetOnlineStreams();
                 return Ok(streamsDto);
             }
             catch (Exception)
@@ -48,11 +48,11 @@ namespace LiveKraken.API.Controllers
         }
 
         [HttpGet("stream/{username}")]
-        public IActionResult GetStream(string username)
+        public async Task<IActionResult> GetStream(string username)
         {
             try
             {
-                var streamDto = this.streamService.GetStream(username);
+                var streamDto = await this.streamService.GetStream(username);
                 return Ok(streamDto);
             }
             catch (Exception)
@@ -63,11 +63,11 @@ namespace LiveKraken.API.Controllers
         }
 
         [HttpPut("status")]
-        public IActionResult ChangeStatus([FromBody]StatusDto stream)
+        public async Task<IActionResult> ChangeStatus([FromBody]StatusDto stream)
         {
             try
             {
-                this.streamService.ChangeStatus(stream.Id);
+                await this.streamService.ChangeStatus(stream.Id);
                 return Ok();
             }
             catch (Exception)

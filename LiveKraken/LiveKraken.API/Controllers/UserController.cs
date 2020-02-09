@@ -22,14 +22,14 @@ namespace LiveKraken.API.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginDto user)
+        public async Task<IActionResult> Login([FromBody] LoginDto user)
         {
             if (user == null)
             {
                 return BadRequest("Invalid client request");
             }
 
-            var userDto = this.userService.Authenticate(user);
+            var userDto = await this.userService.Authenticate(user);
 
             if (userDto == null)
             {
@@ -41,7 +41,7 @@ namespace LiveKraken.API.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromBody] RegisterDto user)
+        public async Task<IActionResult> Register([FromBody] RegisterDto user)
         {
             if (user == null)
             {
@@ -49,7 +49,7 @@ namespace LiveKraken.API.Controllers
             }
             try
             {
-                var createdUser = this.userService.Create(user);
+                var createdUser = await this.userService.CreateAsync(user);
                 string token = this.jwtAuthService.GenerateToken(createdUser);
                 return this.Ok(new { Token = token });
             }
@@ -60,11 +60,11 @@ namespace LiveKraken.API.Controllers
         }
 
         [HttpGet("{userId:guid}")]
-        public IActionResult GetUser(Guid userId)
+        public async Task<IActionResult> GetUser(Guid userId)
         {
             try
             {
-                var userDto = this.userService.GetUser(userId);
+                var userDto = await this.userService.GetUser(userId);
                 return Ok(userDto);
             }
             catch (Exception)
@@ -75,11 +75,11 @@ namespace LiveKraken.API.Controllers
         }
 
         [HttpGet("{username}")]
-        public IActionResult GetUser(string username)
+        public async Task<IActionResult> GetUser(string username)
         {
             try
             {
-                var userDto = this.userService.GetUser(username);
+                var userDto = await this.userService.GetUser(username);
                 return Ok(userDto);
             }
             catch (Exception)

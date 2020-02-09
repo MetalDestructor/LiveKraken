@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace LiveKraken.Models
@@ -25,6 +26,7 @@ namespace LiveKraken.Models
         public Guid GameId { get; set; }
         public Game Game { get; set; }
 
+        [ForeignKey(nameof(User))]
         public Guid UserId { get; set; }
         public User User { get; set; }
     }

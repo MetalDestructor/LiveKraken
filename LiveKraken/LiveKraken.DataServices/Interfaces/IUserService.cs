@@ -1,13 +1,14 @@
 ﻿using LiveKraken.Models.DTO;
 using System;
+using System.Threading.Tasks;
 
 namespace LiveKraken.DataServices.Interfaces
 {
     public interface IUserService
     {
-        UserDto Authenticate(LoginDto loginData);
-        UserDto Create(RegisterDto registerData);
-        UserDto GetUser(Guid userId);
-        UserDto GetUser(string username);
+        Task<UserDto> Authenticate(LoginDto loginData);
+        Task<UserDto> CreateAsync(RegisterDto registerData);
+        Task<UserDto> GetUser(Guid userId);
+        Task<UserDto> GetUser(string username);
     }
 }

@@ -19,27 +19,29 @@ namespace LiveKraken.DataServices
             this.dbContext = dbContext ?? throw new ArgumentNullException("dbContext");
         }
 
-        public IEnumerable<StreamDto> GetStreams()
+        public async Task<IEnumerable<StreamDto>> GetStreams()
         {
-            var streams = this.dbContext.Streams.IncludeTables(true, true).Select(x => new StreamDto(x)).ToList();
+            var streams = await this.dbContext.Streams.IncludeTables(true, true).Select(x => new StreamDto(x)).ToListAsync();
             return streams;
         }
 
-        public IEnumerable<StreamDto> GetOnlineStreams()
+        public async Task<IEnumerable<StreamDto>> GetOnlineStreams()
         {
-            var onlineStreams = this.dbContext.Streams.Where(x => x.IsOnline).Select(x => new StreamDto(x)).ToList();
+            var onlineStreams = await this.dbContext.Streams.Where(x => x.IsOnline).Select(x => new StreamDto(x)).ToListAsync();
             return onlineStreams;
         }
 
-        public StreamDto GetStream(string username)
+        public async Task<StreamDto> GetStream(string username)
         {
-            var stream = dbContext.Streams.IncludeTables(true, true).FirstOrDefault(x => x.User.Username == username);
+            var stream = await dbContext.Streams.IncludeTables(true, true).SingleOrDefaultAsync(x => x.User.Username == username);
             return new StreamDto(stream);
         }
 
-        public void ChangeStatus(Guid streamId)
+        public async Task ChangeStatus(Guid streamId)
         {
-            this.dbContext.Streams.Find(streamId).IsOnline = !this.dbContext.Streams.Find(streamId).IsOnline;
+            var stream = await this.dbContext.Streams.FindAsync(streamId);
+            stream.IsOnline = !stream.IsOnline;
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }
