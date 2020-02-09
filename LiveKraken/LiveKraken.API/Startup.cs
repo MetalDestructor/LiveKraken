@@ -5,6 +5,7 @@ using LiveKraken.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,7 +25,10 @@ namespace LiveKraken.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("KrakenDB")));
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("KrakenDB"));
+            });
+
             services.AddServices(this.Configuration);
             services.AddControllers();
         }

@@ -10,11 +10,17 @@ namespace LiveKraken.Models
         [Key]
         public Guid StreamId { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string Image { get; set; }
 
+        [Required]
         public bool IsOnline { get; set; }
+
+        [Required]
+        public Guid StreamKey { get; set; }
 
         public Guid GameId { get; set; }
         public Game Game { get; set; }

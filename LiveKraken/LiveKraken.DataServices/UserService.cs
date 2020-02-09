@@ -58,10 +58,6 @@ namespace LiveKraken.DataServices
             var stream = new Stream()
             {
                 StreamId = Guid.NewGuid(),
-                Game = this.dbContext.Games.FirstOrDefault(x => x.Title == ""),
-                Image = "https://media.discordapp.net/attachments/289155434013523969/617120484454301755/big_1443633094_image.jpg?width=832&height=468",
-                IsOnline = false,
-                Title = ""
             };
 
             var user = new User()
@@ -71,7 +67,6 @@ namespace LiveKraken.DataServices
                 Username = registerData.Username,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
-                Role = this.dbContext.Roles.FirstOrDefault(x => x.RoleName == "user"),
                 StreamId = stream.StreamId,
                 Stream = stream
             };
@@ -85,7 +80,7 @@ namespace LiveKraken.DataServices
 
         public UserDto GetUser(Guid userId)
         {
-            var user = this.dbContext.Users.First(u => u.Id == userId);
+            var user = this.dbContext.Users.Find(userId);
             var userDto = new UserDto(user);
             return userDto;
         }
